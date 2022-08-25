@@ -1,11 +1,16 @@
 import { NegociacaoController } from "./controllers/Negociacao-Controller.js";
 
 const controller = new NegociacaoController();
-
 const form = document.querySelector('.form');
 
-form.addEventListener('submit', (event: Event) => {
+if (form) {
+    
+    form.addEventListener('submit', (event: Event) => {
+    
+        event.preventDefault();
+        controller.adiciona();
+    });
+} else {
 
-    event.preventDefault();
-    controller.adiciona();
-});
+    throw new Error("Não foi possível iniciar a aplicação.");
+}
